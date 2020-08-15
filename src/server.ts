@@ -5,15 +5,7 @@ const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
 const SQLSource = require("./sql_datasource");
 const fs = require("fs");
-const ws = require("ws");
-const socket_server_port = 5000;
-//const dbSource = require('./db')
-
-//websocket server stuff
-
-
-
-//apollo graph ql stuff
+const credentials = require("../config.json");
 var db = createStore();
 
 const server = new ApolloServer({
@@ -23,16 +15,16 @@ const server = new ApolloServer({
         "db": new SQLSource(db)
     }),
     context: ({req})=>{
-        if(req.headers.authorization != "bread123") throw new Error("Unauthorized");
+        if(req.headers.authorization != credentials.pass) throw new Error("Unauthorized");
     }
 });
 
 function createStore(){
     var db = mysql.createConnection({
         host: 'localhost',
-        user: 'root',
-        password: 'bread123',
-        database: 'test_db',
+        user: credentials.db_user,
+        password: credentials.db_pass,
+        database: credentials.db_name,
         insecureAuth: true,
         multipleStatements: true
     })
