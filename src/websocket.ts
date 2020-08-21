@@ -11,8 +11,6 @@ var connected = {
     //id: websocket connection
 };
 wss.on("connection", (ws: WebSocket, req: Request)=>{
-    var id = req.body.id;
-    connected[id] = ws;
     console.log("websocket connected");
 });
 

@@ -45,14 +45,15 @@ const typeDefs = gql`
     type Query{
         requestTutor(reqBy: ID!, subject: String!, timestamp: String!): RequestTutorReturn
         getUserById(id: Int!): UserInterface
-        getMessageById(id: Int!): Message
+        getMessageById(id: Int!): Message 
         hello: String
     }
 
     type Mutation{
+        login(id: String!): String
         deleteMessageById(id: ID!): Int!
         addUser(displayName: String!): UserInterface
     }
-`;
+`
 
 module.exports = typeDefs;

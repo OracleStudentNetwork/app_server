@@ -46,6 +46,7 @@ function createStore(){
             })
         });
     })
+        
     return db;
 }
 

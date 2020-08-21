@@ -1,4 +1,5 @@
 import { rootCertificates } from "tls";
+const verifyUser = require("./login");
 
 export {};
 
@@ -43,6 +44,7 @@ module.exports = {
         }
     },
     Mutation:{
-        addUser: (_, {displayName }, { dataSources })=> dataSources.db.addUser(displayName)
+        addUser: (_, {displayName }, { dataSources })=> dataSources.db.addUser(displayName),
+        login: (_, {id}) => {console.log(id); return verifyUser(id);}
     }
 }

@@ -8,7 +8,6 @@ class SQLSource extends DataSource {
     constructor(db){
         super();
         this.store = db;
-        this.connected = [];
         console.log('done');
     }
     initialize (config){
